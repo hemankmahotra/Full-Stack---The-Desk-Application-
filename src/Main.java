@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -23,7 +24,6 @@ public class Main {
         int  slen = arr1.length;
         for(int i=0; i<slen;i++){
             System.out.println(arr[i]);
-            // display the all the Strings mentioned in the String array
         }
         ArrayList<Integer> arrlist = new ArrayList<Integer>();
         ArrayList<Integer> expenses = new ArrayList<Integer>();
@@ -67,11 +67,28 @@ public class Main {
                         optionsSelection();
                         break;
                     case 4:
-                        sortExpenses(expenses);
+                    	Collections.sort(expenses);
+                        System.out.println("Expenses have been sorted in ascending order.\n");
+                        System.out.println(expenses + "\n");
                         optionsSelection();
                         break;
                     case 5:
-                        searchExpenses(expenses);
+                    	System.out.println("Enter the expense you need to search:\t");
+                        int searchValue = sc.nextInt();
+                        boolean found = false;
+                        
+                        for (Integer expense : expenses) {
+                            if (expense == searchValue) {
+                                System.out.println("Expense " + searchValue + " found in the list.\n");
+                                found = true;
+                                break;
+                            }
+                        }
+                        
+                        if (!found) {
+                            System.out.println("Expense " + searchValue + " not found in the list.\n");
+                        }
+                        
                         optionsSelection();
                         break;
                     case 6:
@@ -90,11 +107,10 @@ public class Main {
             }
     private static void searchExpenses(ArrayList<Integer> arrayList) {
         int leng = arrayList.size();
-        System.out.println("Enter the expense you need to search:\t");
-        //Complete the method
+        System.out.println("Enter the expense you need to search:\t");      
     }
     private static void sortExpenses(ArrayList<Integer> arrayList) {
         int arrlength =  arrayList.size();
-       //Complete the method. The expenses should be sorted in ascending order.
     }
 }
+
